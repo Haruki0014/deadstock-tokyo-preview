@@ -514,3 +514,28 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
   transform: rotate(-45deg);
   transform-origin: center;
 }
+/* Explore: thin downward arrow */
+.round-link .thin-arrow-down {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  transform: none;
+}
+
+.round-link .thin-arrow-down::before {
+  top: 1px;
+  right: 1px;
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(90deg);
+}
+
+.round-link .thin-arrow-down::after {
+  top: 5px;
+  left: 0;
+  width: 11px;
+  height: 1px;
+  transform: rotate(45deg);
+}
