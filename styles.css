@@ -482,3 +482,35 @@ body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; 
   .hero h1 { font-size:clamp(62px,17.5vw,78px); }
   .hero-bottom p { font-size:8px; }
 }
+/* Minimal thin arrow */
+.thin-arrow {
+  display: inline-block;
+  position: relative;
+  width: 11px;
+  height: 11px;
+  margin-left: 3px;
+  vertical-align: -1px;
+}
+
+.thin-arrow::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 1px;
+  right: 1px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+
+.thin-arrow::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 1px;
+  top: 5px;
+  left: 0;
+  background: currentColor;
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
