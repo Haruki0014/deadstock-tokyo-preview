@@ -1,0 +1,66 @@
+/* V4.1 screenshot-driven refinements. Loaded progressively by script.js. */
+
+.ticker-track {
+  will-change: transform;
+}
+
+@media (min-width: 981px) and (max-width: 1500px) {
+  .section-shell {
+    padding-top: clamp(56px, 6vw, 88px);
+    padding-bottom: clamp(72px, 7vw, 108px);
+  }
+
+  .statement-layout {
+    padding-top: clamp(30px, 3.8vw, 56px);
+    gap: clamp(34px, 5vw, 72px);
+  }
+
+  .hero h1 {
+    font-size: clamp(108px, 13vw, 190px);
+  }
+
+  .hero h1 span:nth-child(2) {
+    margin-left: clamp(74px, 11vw, 150px);
+  }
+
+  .hero-orbit {
+    width: clamp(132px, 13vw, 184px);
+    right: clamp(72px, 8vw, 122px);
+    top: clamp(132px, 13vw, 176px);
+    opacity: .72;
+  }
+
+  .hero-orbit strong {
+    font-size: clamp(42px, 5vw, 68px);
+  }
+
+  .hero-subgrid {
+    margin-top: clamp(24px, 3vw, 40px);
+  }
+
+  .hero-status {
+    margin-top: 26px;
+  }
+
+  .collection-heading-row {
+    padding-top: clamp(30px, 4vw, 52px);
+    padding-bottom: clamp(48px, 6vw, 82px);
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1180px) {
+  .hero-orbit {
+    right: 34px;
+    opacity: .52;
+  }
+
+  .statement-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    will-change: auto;
+  }
+}
