@@ -7,6 +7,35 @@ const SHOP = {
   ]
 };
 
+function loadV41Styles() {
+  if (document.querySelector('link[href="v4-1.css"]')) return;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "v4-1.css";
+  document.head.append(link);
+}
+
+function normalizeTickerLoop() {
+  const track = document.querySelector(".ticker-track");
+  if (!track) return;
+
+  // V4 originally contained four unique phrases plus two repeated phrases.
+  // Build two identical complete four-phrase groups so translateX(-50%)
+  // returns to an equivalent visual state without a discontinuous jump.
+  const originalChildren = [...track.children];
+  const completeGroup = originalChildren.slice(0, 8);
+  if (completeGroup.length < 8) return;
+
+  const firstGroup = completeGroup.map((element) => element.cloneNode(true));
+  const secondGroup = completeGroup.map((element) => {
+    const clone = element.cloneNode(true);
+    clone.setAttribute("aria-hidden", "true");
+    return clone;
+  });
+
+  track.replaceChildren(...firstGroup, ...secondGroup);
+}
+
 function bindProductData() {
   document.querySelectorAll("[data-product-name]").forEach((element) => {
     const item = SHOP.products[Number(element.dataset.productName)];
@@ -123,6 +152,8 @@ function setupPointerDepth() {
   });
 }
 
+loadV41Styles();
+normalizeTickerLoop();
 bindProductData();
 applyLanguage(getInitialLanguage());
 setupReveal();
