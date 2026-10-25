@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Concept sweatpants illustration</title>
+  <desc id="desc">Graphic concept artwork of dark sweatpants. This is not a product photograph.</desc>
+  <defs>
+    <linearGradient id="fabric" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b2b2b"/>
+      <stop offset="0.52" stop-color="#111"/>
+      <stop offset="1" stop-color="#242424"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a4a4a"/>
+      <stop offset="1" stop-color="#171717"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-20%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#000" flood-opacity=".45"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)" transform="translate(110 55)">
+    <path d="M185 72C245 42 440 42 500 72l17 118-26 142 38 573-154 8-40-412-43 412-154-8 42-573-28-142z" fill="url(#fabric)" stroke="#555" stroke-width="5"/>
+    <path d="M179 78c82 28 252 28 327 0l10 72c-92 35-245 35-346 0z" fill="#151515" stroke="#484848" stroke-width="4"/>
+    <path d="M342 91v89" stroke="#747474" stroke-width="5" stroke-linecap="round"/>
+    <path d="M277 119c-18 51-25 110-22 177M418 119c16 53 23 112 20 177" fill="none" stroke="#343434" stroke-width="5"/>
+    <path d="M168 893h165l-7 45H164zM370 893h165l5 45H376z" fill="url(#edge)" stroke="#4d4d4d" stroke-width="4"/>
+    <rect x="205" y="228" width="95" height="118" rx="8" fill="none" stroke="#3d3d3d" stroke-width="4"/>
+    <text x="222" y="275" fill="#c7ff2e" font-family="Arial, sans-serif" font-size="34" font-weight="700">D$T</text>
+    <text x="222" y="307" fill="#8d8d8d" font-family="Arial, sans-serif" font-size="15" letter-spacing="3">CONCEPT</text>
+    <path d="M489 347l-62 77" stroke="#555" stroke-width="4"/>
+    <path d="M202 445l78 62M458 445l-75 62" stroke="#2d2d2d" stroke-width="4"/>
+  </g>
+</svg>
