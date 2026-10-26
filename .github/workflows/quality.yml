@@ -24,3 +24,38 @@ jobs:
         with:
           node-version: '22'
       - run: bash scripts/verify.sh
+
+  visual-qa:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Run multi-viewport visual QA
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/dst-visual-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8000/ > /dev/null; then
+              break
+            fi
+            sleep 0.25
+          done
+          curl --fail --silent http://127.0.0.1:8000/ > /dev/null
+          npm run visual:qa
+      - name: Upload visual QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-qa-${{ github.run_id }}-${{ github.run_attempt }}
+          path: visual-qa-artifacts
+          if-no-files-found: error
+          retention-days: 7
