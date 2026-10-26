@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-required=(README.md AGENTS.md REVIEW.md index.html styles.css v4-1.css script.js scripts/quality_check.py)
+required=(README.md AGENTS.md REVIEW.md index.html styles.css v4-1.css script.js package.json scripts/quality_check.py scripts/visual_qa.mjs)
 for file in "${required[@]}"; do
   [[ -f "$file" ]] || { echo "Missing required file: $file" >&2; exit 1; }
 done
@@ -9,6 +9,7 @@ done
 git diff --check
 python3 scripts/quality_check.py
 node --check script.js
+node --check scripts/visual_qa.mjs
 
 for css in styles.css v4-1.css; do
   python3 - "$css" <<'PY'
