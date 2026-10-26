@@ -24,7 +24,15 @@ For LOW-risk experiments:
 4. run `bash scripts/verify.sh`;
 5. inspect the diff and repair failures;
 6. open/update a PR targeting `ai-lab`;
-7. merge to `ai-lab` only when checks pass and no material review issue remains.
+7. for visual-facing changes, require successful automated Visual QA and follow `docs/VISUAL_CRITIC.md` on the latest screenshot artifact;
+8. merge to `ai-lab` only when checks pass and no material deterministic or visual-review issue remains.
+
+## Visual review policy
+- Deterministic browser checks catch breakage; the AI Visual Critic catches aesthetic weaknesses.
+- For rendered-output changes, inspect phone, iPad portrait, iPad landscape and desktop screenshots from the latest successful Visual QA artifact.
+- Follow `docs/VISUAL_CRITIC.md` for scoring, severity, idempotency and merge rules.
+- Automatically fix only high-confidence LOW-risk polish issues with one clearly better solution.
+- If multiple valid design directions exist, do not silently choose. Prepare A/B/C options or request direction.
 
 ## Escalate before
 - merging or changing `main`;
@@ -38,5 +46,6 @@ For LOW-risk experiments:
 - requested experiment works;
 - existing core behavior is preserved unless intentionally changed;
 - `bash scripts/verify.sh` passes;
-- no broken local assets, secrets, or unrelated changes are present;
+- visual-facing work passes Visual QA and the latest artifact has completed AI Visual Critic review;
+- no broken local assets, secrets, unresolved BLOCKER/HIGH visual findings, or unrelated changes are present;
 - PR summary states what changed and how it was verified.
