@@ -8,7 +8,7 @@ const SHOP = {
 };
 
 function loadProgressiveStyles() {
-  ["v4-1.css", "product-v5.css"].forEach((href) => {
+  ["v4-1.css", "product-v5.css", "v6.css"].forEach((href) => {
     if (document.querySelector(`link[href="${href}"]`)) return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
