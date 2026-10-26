@@ -1,13 +1,15 @@
 /* V5 product-led editorial layer. Keeps verified product facts and BASE links intact. */
 .product-stack { gap: clamp(56px, 8vw, 112px); }
 .product-card { position: relative; }
-.product-visual { background: #111; min-height: clamp(520px, 62vw, 820px); }
-.product-visual::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.32)); z-index:1; }
-.product-card-a .product-visual,.product-card-b .product-visual,.product-card-c .product-visual { background:radial-gradient(circle at 55% 38%,#30302e 0,#181817 42%,#0d0d0d 78%); }
-.concept-garment { width:min(70%,620px); max-height:78%; z-index:2; filter:drop-shadow(0 34px 30px rgba(0,0,0,.62)); }
-.product-count,.concept-badge { z-index:4; }
-.concept-badge { max-width:190px; line-height:1.35; }
-.visual-word { z-index:0; opacity:.85; }
+.product-visual { background-color:#111; min-height:clamp(520px,62vw,820px); overflow:hidden; background-image:url('assets/deadstock-v5-editorial.webp'); background-repeat:no-repeat; background-size:300% auto; }
+.product-card-a .product-visual { background-position:100% 54%; }
+.product-card-b .product-visual { background-position:50% 54%; }
+.product-card-c .product-visual { background-position:0 54%; }
+.product-visual::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(0,0,0,.03) 50%,rgba(0,0,0,.46)); z-index:1; }
+.concept-garment,.visual-grid,.visual-word { display:none; }
+.product-count,.concept-badge { z-index:4; text-shadow:0 1px 12px rgba(0,0,0,.8); }
+.concept-badge { max-width:245px; line-height:1.35; font-size:0; }
+.concept-badge::after { content:"AI-ASSISTED EDITORIAL CONCEPT · REAL PRODUCT REFERENCES"; font-size:9px; }
 .product-info { position:relative; }
 .product-copy h3 { max-width:11ch; }
 .price { font-size:clamp(30px,3vw,48px); }
@@ -28,14 +30,14 @@
 }
 @media (max-width:980px) {
   .product-stack { gap:72px; }
-  .product-visual { min-height:min(78vw,700px); }
-  .concept-garment { width:min(72%,560px); }
+  .product-visual { min-height:min(78vw,700px); background-size:300% auto; }
 }
 @media (max-width:640px) {
   .product-stack { gap:62px; }
-  .product-visual { min-height:118vw; }
-  .concept-garment { width:78%; max-height:76%; }
-  .concept-badge { top:auto; right:12px; bottom:12px; max-width:150px; }
-  .visual-word { bottom:1%; font-size:35vw; }
+  .product-visual { min-height:118vw; background-size:auto 100%; }
+  .product-card-a .product-visual { background-position:82% center; }
+  .product-card-b .product-visual { background-position:50% center; }
+  .product-card-c .product-visual { background-position:18% center; }
+  .concept-badge { top:auto; right:12px; bottom:12px; max-width:185px; }
   .product-copy h3 { max-width:none; }
 }
