@@ -1,7 +1,54 @@
-/* V4.1 screenshot-driven refinements. Loaded progressively by script.js. */
+/* V4.x screenshot-driven refinements. Loaded progressively by script.js. */
 
 .ticker-track {
   will-change: transform;
+}
+
+.external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .7em;
+}
+
+.external-icon {
+  width: 12px;
+  height: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transition: transform .18s ease;
+}
+
+.external-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  overflow: visible;
+}
+
+.external-link:hover .external-icon,
+.external-link:focus-visible .external-icon {
+  transform: translate(2px, -2px);
+}
+
+.shop-link.external-link {
+  justify-content: center;
+}
+
+.product-link.external-link {
+  justify-content: space-between;
+}
+
+.product-visual:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+  border-color: var(--signal);
 }
 
 @media (min-width: 981px) and (max-width: 1500px) {
@@ -46,6 +93,24 @@
     padding-top: clamp(30px, 4vw, 52px);
     padding-bottom: clamp(48px, 6vw, 82px);
   }
+
+  .product-card {
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr);
+    gap: clamp(24px, 4vw, 56px);
+  }
+
+  .product-card-b {
+    grid-template-columns: minmax(300px, .92fr) minmax(0, 1.08fr);
+  }
+
+  .product-visual {
+    min-height: clamp(500px, 58vw, 780px);
+  }
+
+  .product-info {
+    padding-top: 18px;
+    padding-bottom: 14px;
+  }
 }
 
 @media (min-width: 981px) and (max-width: 1180px) {
@@ -59,8 +124,36 @@
   }
 }
 
+@media (min-width: 641px) and (max-width: 980px) {
+  .product-card,
+  .product-card-b {
+    gap: 20px;
+  }
+
+  .product-visual {
+    min-height: min(74vw, 680px);
+  }
+
+  .product-info {
+    min-height: 0;
+    padding-top: 18px;
+    padding-bottom: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .external-icon {
+    width: 10px;
+    height: 10px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ticker-track {
     will-change: auto;
+  }
+
+  .external-icon {
+    transition: none;
   }
 }
