@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-required=(README.md AGENTS.md REVIEW.md index.html styles.css v4-1.css script.js package.json scripts/quality_check.py scripts/visual_qa.mjs)
+required=(README.md AGENTS.md REVIEW.md docs/VISUAL_CRITIC.md index.html styles.css v4-1.css script.js package.json scripts/quality_check.py scripts/visual_qa.mjs)
 for file in "${required[@]}"; do
   [[ -f "$file" ]] || { echo "Missing required file: $file" >&2; exit 1; }
 done
